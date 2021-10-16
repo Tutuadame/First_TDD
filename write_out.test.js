@@ -34,7 +34,6 @@ describe("Greetings", function(){
     });
 
     test("should write out for multiple input", () =>{
-
         out_2 = "Hello, ";
         A="Béla",B="Endre";
         
@@ -43,4 +42,19 @@ describe("Greetings", function(){
         console.log(arguments.length)
         expect(write_out(A,B)).toBe(out_2);
     });
+
+    test("should write out for uppercase",()=>{
+        A = "JAY";
+        expect(write_out(A)).toBe("HELLO"+A);
+    })
+
+    test("should write out for uppercase, mixed",()=>{
+        A = "JAY", B = "Sarah", C = "KEVIN";
+        expect(write_out()).toBe("Hello, "+B+"."+"HELLO,"+A+" AND "+B+".");
+    })
+
+    test("should write out for uppercase, mixed long",()=>{
+        A = "JAY", B = "Sarah", C = "KEVIN";
+        expect(write_out(A,B,C)).toBe("Hello, "+B+"."+"HELLO,"+A+" AND "+C+".");
+    })
 });
