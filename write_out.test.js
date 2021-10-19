@@ -45,13 +45,13 @@ function write_out(){
                 //console.log(out);
                 for(let i=0;i<upper.length;i++){
                     if(upper.length == 1){
-                        out_2 += upper[i]+".";
+                        out_2 += upper[i]+"!";
                         break;
                     }
                     if(i != upper.length-1 && upper.length != 1){
                         out_2 += upper[i]+", ";
                     }else if(upper.length != 1){
-                        out_2 += "AND "+upper[i]+".";
+                        out_2 += "AND "+upper[i]+"!";
                     }
                 }
 
@@ -60,7 +60,7 @@ function write_out(){
                     return out;
                 }else{
                     //console.log(out+out_2);
-                    return out+out_2;
+                    return (out+" ")+out_2;
                 }
        }
 }
@@ -90,11 +90,11 @@ describe("Greetings", function(){
 
     test("should write out for uppercase, mixed",()=>{
         A = "JAY", B = "Sarah", C = "KEVIN";
-        expect(write_out(A,B,C)).toBe("Hello, "+B+"."+"AND HELLO, "+A+", AND "+C+".");
+        expect(write_out(A,B,C)).toBe("Hello, "+B+"."+" AND HELLO, "+A+", AND "+C+"!");
     })
 
     test("should write out for uppercase, mixed",()=>{
         A = "JAY", B = "Sarah", C = "KEVIN", D = "Maya", E = "Charlotte";
-        expect(write_out(A,B,C,D,E)).toBe("Hello, "+B+", "+D+", and "+E+"."+"AND HELLO, "+A+", AND "+C+".");
+        expect(write_out(A,B,C,D,E)).toBe("Hello, "+B+", "+D+", and "+E+"."+" AND HELLO, "+A+", AND "+C+"!");
     })
 });
