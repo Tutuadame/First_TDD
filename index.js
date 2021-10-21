@@ -6,14 +6,26 @@ function write_out(){
     
     switch(arguments.length){
         case 1:
-                Name = arguments[0].toString();    
-                if( Name == Name.toUpperCase()){
-                    out = "HELLO, ";                    
-                    return out+Name+".";        
-                }else{                                                          
-                    return out+Name+".";        
-                }
-                
+                if(arguments[0].includes(",")){
+                    
+                    for(let i=arguments[0].length; i>=0; i--){
+                        if(arguments[0][i] == ","){
+                            Change_2 = arguments[0].substring(i,arguments[0].length);
+                            arguments[0] = arguments[0].substring(0,i);
+                            break;
+                        }
+                    }
+                    Change_2 = Change_2.replace(","," and");
+                    return "Hello, "+arguments[0]+Change_2+".";
+                }else{
+                    Name = arguments[0].toString();    
+                    if( Name == Name.toUpperCase()){
+                        out = "HELLO, ";                    
+                        return out+Name+".";
+                    }else{                                                          
+                        return out+Name+".";       
+                    }
+                }                
         default:
                 low = [];
                 upper = [];
@@ -57,6 +69,7 @@ function write_out(){
                 }else{
                     return (out+" ")+out_2;
                 }
+            
     }
 }
 module.exports = write_out;
