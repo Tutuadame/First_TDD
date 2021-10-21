@@ -2,7 +2,7 @@ const write_out = require('./index.js');
 
 describe("Greetings", function(){
 
-    test("should write out for no input", () =>{  
+   /* test("should write out for no input", () =>{  
         expect(write_out()).toBe("Hello, my friend.");
     });
 
@@ -31,5 +31,23 @@ describe("Greetings", function(){
     test("should write out for uppercase, mixed",()=>{
         A = "JAY", B = "Sarah", C = "KEVIN", D = "Maya", E = "Charlotte";
         expect(write_out(A,B,C,D,E)).toBe("Hello, "+B+", "+D+", and "+E+"."+" AND HELLO, "+A+", AND "+C+"!");
+    })*/
+
+    test("should write out for single input separated with commas",()=>{
+        A = "Jay, Sarah, Kevin, Maya, Charlotte";
+        Change = "";
+        for(let i=A.length; i>=0; i--){
+            if(A[i] == ","){
+                Change = A.substring(i,A.length);
+                A = A.substring(0,i);
+                break;
+            }
+        }
+        Change = Change.replace(","," and");
+        console.log(Change);
+
+        //console.log(write_out("Jay, Sarah, Kevin, Maya, Charlotte"));
+        expect(write_out("Jay, Sarah, Kevin, Maya, Charlotte")).toBe("Hello, "+A+Change+".");
     })
+
 });
